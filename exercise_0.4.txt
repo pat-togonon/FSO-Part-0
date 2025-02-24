@@ -1,0 +1,37 @@
+sequenceDiagram for adding a user input to the list
+    participant user
+    participant browser
+    participant server
+
+
+    user->>browser: SUBMIT new list item / user input
+    activate browser
+    browser->>server: POST new list item / user input to the address new_note / server
+    activate server
+    server-->>browser: HTTP GET request to the address https://studies.cs.helsinki.fi/exampleapp/notes
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    activate server
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
+    deactivate server
+
+    browser-->>user: Shows the page with user input in it
+    deactivate browser
+
+

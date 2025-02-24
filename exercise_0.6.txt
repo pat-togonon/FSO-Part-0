@@ -1,0 +1,17 @@
+sequenceDiagram for adding a new user input to spa list
+    participant user
+    participant browser
+    participant server
+
+
+    user->>browser: SUBMIT new list item / user input
+    activate browser
+    browser->>server: POST new list item / user input to the address new_note / server
+    activate server
+    server->>browser: JSON response {"message":"note created"}
+    deactivate server
+
+    browser->>browser: Updates the list (adds in the user input)
+
+    browser-->>user: Shows the updated list without the page refreshing
+    deactivate browser

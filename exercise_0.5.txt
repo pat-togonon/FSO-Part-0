@@ -1,0 +1,24 @@
+sequenceDiagram for when a user goes to the single page app of the notes app
+
+    participant browser
+    participant server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    activate server
+    server-->>browser: the HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->>browser: the CSS file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    activate server
+    server-->>browser: the JavaScript file
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    activate server
+    server-->>browser: [{"content":"LM estuvo aqui","date":"2025-02-24T03:51:23.808Z"}, ...]
+    deactivate server
